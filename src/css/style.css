@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box; }
 
@@ -47,7 +48,8 @@ body {
   body #app {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem; }
+    padding: 0 1rem;
+    /* Sugestão */ }
     body #app header {
       display: flex;
       flex-wrap: wrap;
@@ -65,7 +67,8 @@ body {
           body #app header nav ul li.active a {
             color: #fff; }
       body #app header .search {
-        width: 33%; }
+        width: 33%;
+        position: relative; }
         body #app header .search input {
           background: transparent;
           border: 0px;
@@ -85,51 +88,62 @@ body {
             color: rgba(255, 255, 255, 0.6); }
           body #app header .search input:focus {
             border-color: #fff; }
-    body #app section .list-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 2rem 0; }
-      body #app section .list-title h1 {
-        margin: 0px; }
-      body #app section .list-title nav b {
-        font-size: .8rem;
-        margin-right: 1.5rem; }
-    body #app section .char-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between; }
-      body #app section .char-list li {
-        width: 23%;
-        margin-right: 1rem;
-        margin-bottom: 1.5rem; }
-        body #app section .char-list li:last-child {
-          margin-right: 0px; }
-        body #app section .char-list li .char-img {
-          height: 350px;
-          background-position: top center;
-          background-size: 190%;
-          position: relative;
-          transition: .3s ease all; }
-          body #app section .char-list li .char-img:hover {
-            background-size: 200%; }
-            body #app section .char-list li .char-img:hover .char-info {
-              background-image: linear-gradient(transparent, #333); }
-          body #app section .char-list li .char-img .char-status {
-            background: #ddd;
-            padding: .5rem 1.5rem;
-            display: inline-block;
-            position: absolute;
-            right: 0;
-            top: 10px;
-            font-size: .8rem; }
-          body #app section .char-list li .char-img .char-info {
-            position: absolute;
-            bottom: 0;
-            padding: 0 1rem .5rem;
-            font-size: .7rem; }
-            body #app section .char-list li .char-img .char-info .char-name {
-              font-size: 1.5rem; }
+        body #app header .search .search-icon {
+          display: block;
+          width: 24px;
+          height: 24px;
+          background-size: cover;
+          position: absolute;
+          top: 10px;
+          right: 0;
+          background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgMzAuMjM5IDMwLjIzOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzAuMjM5IDMwLjIzOTsiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPjxnPgoJPHBhdGggZD0iTTIwLjE5NCwzLjQ2Yy00LjYxMy00LjYxMy0xMi4xMjEtNC42MTMtMTYuNzM0LDBjLTQuNjEyLDQuNjE0LTQuNjEyLDEyLjEyMSwwLDE2LjczNSAgIGM0LjEwOCw0LjEwNywxMC41MDYsNC41NDcsMTUuMTE2LDEuMzRjMC4wOTcsMC40NTksMC4zMTksMC44OTcsMC42NzYsMS4yNTRsNi43MTgsNi43MThjMC45NzksMC45NzcsMi41NjEsMC45NzcsMy41MzUsMCAgIGMwLjk3OC0wLjk3OCwwLjk3OC0yLjU2LDAtMy41MzVsLTYuNzE4LTYuNzJjLTAuMzU1LTAuMzU0LTAuNzk0LTAuNTc3LTEuMjUzLTAuNjc0QzI0Ljc0MywxMy45NjcsMjQuMzAzLDcuNTcsMjAuMTk0LDMuNDZ6ICAgIE0xOC4wNzMsMTguMDc0Yy0zLjQ0NCwzLjQ0NC05LjA0OSwzLjQ0NC0xMi40OTIsMGMtMy40NDItMy40NDQtMy40NDItOS4wNDgsMC0xMi40OTJjMy40NDMtMy40NDMsOS4wNDgtMy40NDMsMTIuNDkyLDAgICBDMjEuNTE3LDkuMDI2LDIxLjUxNywxNC42MywxOC4wNzMsMTguMDc0eiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBkYXRhLW9sZF9jb2xvcj0iI2ZmZmZmZiIgZmlsbD0iI2ZmZmZmZiIvPgo8L2c+PC9nPiA8L3N2Zz4K"); }
+    body #app section {
+      /* Personagens */ }
+      body #app section .list-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 2rem 0; }
+        body #app section .list-title h1 {
+          margin: 0px; }
+        body #app section .list-title nav b {
+          font-size: .8rem;
+          margin-right: 1.5rem; }
+      body #app section .char-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; }
+        body #app section .char-list li {
+          width: 23%;
+          margin-right: 1rem;
+          margin-bottom: 1.5rem; }
+          body #app section .char-list li:last-child {
+            margin-right: 0px; }
+          body #app section .char-list li .char-img {
+            height: 350px;
+            background-position: top center;
+            background-size: 190%;
+            position: relative;
+            transition: .3s ease all; }
+            body #app section .char-list li .char-img:hover {
+              background-size: 200%; }
+              body #app section .char-list li .char-img:hover .char-info {
+                background-image: linear-gradient(transparent, #333); }
+            body #app section .char-list li .char-img .char-status {
+              background: #ddd;
+              padding: .5rem 1.5rem;
+              display: inline-block;
+              position: absolute;
+              right: 0;
+              top: 10px;
+              font-size: .8rem; }
+            body #app section .char-list li .char-img .char-info {
+              position: absolute;
+              bottom: 0;
+              padding: 0 1rem .5rem;
+              font-size: .7rem; }
+              body #app section .char-list li .char-img .char-info .char-name {
+                font-size: 1.5rem; }
     body #app footer {
       text-align: center; }
       body #app footer ul.pagination {
@@ -141,5 +155,31 @@ body {
             color: rgba(255, 255, 255, 0.6); }
           body #app footer ul.pagination li.active a {
             color: #fff; }
+    body #app form.contact {
+      max-width: 500px;
+      margin: 0 auto; }
+      body #app form.contact h1 {
+        text-align: center; }
+      body #app form.contact input, body #app form.contact textarea {
+        background: #fff;
+        border: 0px;
+        outline: none;
+        border-radius: 3px;
+        padding: 1rem;
+        width: 100%;
+        margin-bottom: 1rem;
+        font-family: 'Open sans', sans-serif; }
+      body #app form.contact textarea {
+        height: 300px;
+        resize: none; }
+      body #app form.contact .btn-submit {
+        background: #066b30;
+        color: #fff;
+        border-radius: 3px;
+        border: 0px;
+        padding: 1rem 2rem; }
+        body #app form.contact .btn-submit:active {
+          background: #fff;
+          color: #066b30; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,6 +1,7 @@
 $danger:red;
 $success:green;
 $faded:rgba(255,255,255, .6);
+$primary:#066b30;
 
 *{box-sizing: border-box;}
 
@@ -95,6 +96,7 @@ body{
 
             .search{
                 width: 33%;
+                position: relative;
 
                 input{
                     background: transparent;
@@ -114,11 +116,24 @@ body{
                     &:focus{border-color: #fff;}
 
                 }   
+
+                .search-icon{
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    background-size: cover;
+                    position: absolute;
+                    top: 10px;
+                    right: 0;
+                    background-image:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgMzAuMjM5IDMwLjIzOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzAuMjM5IDMwLjIzOTsiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPjxnPgoJPHBhdGggZD0iTTIwLjE5NCwzLjQ2Yy00LjYxMy00LjYxMy0xMi4xMjEtNC42MTMtMTYuNzM0LDBjLTQuNjEyLDQuNjE0LTQuNjEyLDEyLjEyMSwwLDE2LjczNSAgIGM0LjEwOCw0LjEwNywxMC41MDYsNC41NDcsMTUuMTE2LDEuMzRjMC4wOTcsMC40NTksMC4zMTksMC44OTcsMC42NzYsMS4yNTRsNi43MTgsNi43MThjMC45NzksMC45NzcsMi41NjEsMC45NzcsMy41MzUsMCAgIGMwLjk3OC0wLjk3OCwwLjk3OC0yLjU2LDAtMy41MzVsLTYuNzE4LTYuNzJjLTAuMzU1LTAuMzU0LTAuNzk0LTAuNTc3LTEuMjUzLTAuNjc0QzI0Ljc0MywxMy45NjcsMjQuMzAzLDcuNTcsMjAuMTk0LDMuNDZ6ICAgIE0xOC4wNzMsMTguMDc0Yy0zLjQ0NCwzLjQ0NC05LjA0OSwzLjQ0NC0xMi40OTIsMGMtMy40NDItMy40NDQtMy40NDItOS4wNDgsMC0xMi40OTJjMy40NDMtMy40NDMsOS4wNDgtMy40NDMsMTIuNDkyLDAgICBDMjEuNTE3LDkuMDI2LDIxLjUxNywxNC42MywxOC4wNzMsMTguMDc0eiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBkYXRhLW9sZF9jb2xvcj0iI2ZmZmZmZiIgZmlsbD0iI2ZmZmZmZiIvPgo8L2c+PC9nPiA8L3N2Zz4K');
+                }
             }
 
         }
 
         section{
+
+            /* Personagens */
             .list-title{
                 display: flex;
                 align-items: center;
@@ -216,6 +231,45 @@ body{
                     &.active{
                         a{color:#fff;}
                     }
+                }
+            }
+        }
+
+        /* Sugestão */
+        form.contact{
+            max-width: 500px;
+            margin: 0 auto;
+
+            h1{
+                text-align: center;
+            }
+
+            input, textarea{
+                background: #fff;
+                border: 0px;
+                outline: none;
+                border-radius: 3px;
+                padding: 1rem;
+                width: 100%;
+                margin-bottom: 1rem;
+                font-family: 'Open sans', sans-serif;
+            }
+
+            textarea{
+                height: 300px;
+                resize: none;
+            }
+
+            .btn-submit{
+                background: $primary;
+                color: #fff;
+                border-radius: 3px;
+                border: 0px;
+                padding: 1rem 2rem;
+
+                &:active{
+                    background:#fff;
+                    color: $primary;
                 }
             }
         }
