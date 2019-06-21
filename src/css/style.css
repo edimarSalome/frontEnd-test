@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open sans', sans-serif;
+  font-size: 16px;
+  color: #fff; }
+  body ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none; }
+  body a {
+    text-decoration: none;
+    color: #fff;
+    font-size: .9rem; }
+    body a:hover {
+      text-decoration: underline; }
+  body button {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: .5rem 1.4rem;
+    outline: none; }
+    body button:active, body button.active {
+      background: #fff;
+      color: #000; }
+    body button.danger {
+      border-color: red;
+      color: red; }
+      body button.danger:active, body button.danger.active {
+        background: red;
+        color: #fff; }
+    body button.success {
+      border-color: green;
+      color: green; }
+      body button.success:active, body button.success.active {
+        background: green;
+        color: #fff; }
+  body .bg-danger {
+    background: red !important;
+    color: #fff; }
+  body .bg-success {
+    background: green !important;
+    color: #fff; }
+  body #app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem; }
+    body #app header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center; }
+      body #app header .logo {
+        height: 200px; }
+      body #app header nav ul {
+        display: flex; }
+        body #app header nav ul li {
+          padding: 1rem; }
+          body #app header nav ul li a {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, 0.6); }
+          body #app header nav ul li.active a {
+            color: #fff; }
+      body #app header .search {
+        width: 33%; }
+        body #app header .search input {
+          background: transparent;
+          border: 0px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+          padding: .7rem;
+          width: 100%;
+          color: #fff;
+          outline: none;
+          transition: all .3s ease;
+          font-size: 1.2rem; }
+          body #app header .search input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 1; }
+          body #app header .search input:-ms-input-placeholder {
+            color: rgba(255, 255, 255, 0.6); }
+          body #app header .search input::-ms-input-placeholder {
+            color: rgba(255, 255, 255, 0.6); }
+          body #app header .search input:focus {
+            border-color: #fff; }
+    body #app section .list-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 2rem 0; }
+      body #app section .list-title h1 {
+        margin: 0px; }
+      body #app section .list-title nav b {
+        font-size: .8rem;
+        margin-right: 1.5rem; }
+    body #app section .char-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; }
+      body #app section .char-list li {
+        width: 23%;
+        margin-right: 1rem;
+        margin-bottom: 1.5rem; }
+        body #app section .char-list li:last-child {
+          margin-right: 0px; }
+        body #app section .char-list li .char-img {
+          height: 350px;
+          background-position: top center;
+          background-size: 190%;
+          position: relative;
+          transition: .3s ease all; }
+          body #app section .char-list li .char-img:hover {
+            background-size: 200%; }
+            body #app section .char-list li .char-img:hover .char-info {
+              background-image: linear-gradient(transparent, #333); }
+          body #app section .char-list li .char-img .char-status {
+            background: #ddd;
+            padding: .5rem 1.5rem;
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 10px;
+            font-size: .8rem; }
+          body #app section .char-list li .char-img .char-info {
+            position: absolute;
+            bottom: 0;
+            padding: 0 1rem .5rem;
+            font-size: .7rem; }
+            body #app section .char-list li .char-img .char-info .char-name {
+              font-size: 1.5rem; }
+    body #app footer {
+      text-align: center; }
+      body #app footer ul.pagination {
+        display: inline-flex;
+        margin: 0 auto; }
+        body #app footer ul.pagination li {
+          padding: .5rem; }
+          body #app footer ul.pagination li a {
+            color: rgba(255, 255, 255, 0.6); }
+          body #app footer ul.pagination li.active a {
+            color: #fff; }
+
+/*# sourceMappingURL=style.css.map */

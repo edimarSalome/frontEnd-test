@@ -1,13 +1,133 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Breaking Bad - Catálogo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="css/style.css" />
+
         <style>
-            
+            body{background: #000;}
         </style>
     </head>
     <body>
-        <div class="splash"></div>
-        <div class="loader"></div>
-        <div class="app"></div>
+        <div id="splash"></div>
+        <div id="loader"></div>
+        <div id="app">
+            <header>
+                <img class="logo" src="img/logo.jpg" alt="Logo Breaking Bad" />
+                <nav title="Opções">
+                    <ul>
+                        <li class="active"><a href="#">Personagens</a></li>
+                        <li><a href="#">Episódios</a></li>
+                        <li><a href="#">Sugestão</a></li>
+                    </ul>
+                </nav>
+                <div class="search">
+                    <input type="text" title="Encontre um personagem" placeholder="Encontre um personagem ..." />
+                </div>
+            </header>
+            <section>
+                <div class="list-title">
+                    <h1>Personagens</h1>
+                    <nav class="filters" title="Filtros">
+                        <b>Filtre por:</b>
+                        <button class="success">Vivo</button>
+                        <button class="danger">Morto</button>
+                        <button class="active">Todos</button>
+                    </nav>
+                </div>
+                <ul class="char-list">
+                    <li>
+                        <div class="char-img" style="background-image:url('https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg')">
+                            <div class="char-status bg-danger">Morto</div>
+                            <div class="char-info">
+                                <p class="char-name">Walter White</p>
+                                <div class="char-birth">
+                                    &#9733; <span>09-07-1958</span>
+                                </div>
+                                <div class="char-occupation">
+                                    High School Chemistry Teacher, Meth King Pin
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                            <div class="char-img" style="background-image:url('https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg')">
+                                <div class="char-status bg-success">Vivo</div>
+                                <div class="char-info">
+                                    <p class="char-name">Walter White</p>
+                                    <div class="char-birth">
+                                            &#9733; 09-07-1958
+                                    </div>
+                                    <div class="char-occupation">
+                                        "High School Chemistry Teacher", "Meth King Pin"
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                                <div class="char-img" style="background-image:url('https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg')">
+                                    <div class="char-status bg-danger">Morto</div>
+                                    <div class="char-info">
+                                        <p class="char-name">Walter White</p>
+                                        <div class="char-birth">
+                                                &#9733; 09-07-1958
+                                        </div>
+                                        <div class="char-occupation">
+                                            "High School Chemistry Teacher", "Meth King Pin"
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                    <div class="char-img" style="background-image:url('https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg')">
+                                        <div class="char-status bg-danger">Morto</div>
+                                        <div class="char-info">
+                                            <p class="char-name">Walter White</p>
+                                            <div class="char-birth">
+                                                    &#9733; 09-07-1958
+                                            </div>
+                                            <div class="char-occupation">
+                                                "High School Chemistry Teacher", "Meth King Pin"
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                        <div class="char-img" style="background-image:url('https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg')">
+                                            <div class="char-status bg-success">Vivo</div>
+                                            <div class="char-info">
+                                                <p class="char-name">Walter White</p>
+                                                <div class="char-birth">
+                                                    &#9733; 09-07-1958
+                                                </div>
+                                                <div class="char-occupation">
+                                                    "High School Chemistry Teacher", "Meth King Pin"
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                </ul>
+            </section>
+            <footer>
+                <ul class="pagination">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                </ul>
+            </footer>
+        </div>
+
+
+
+
+
+
+        <!-- dev -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <!-- prod -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
     </body>
 </html>
