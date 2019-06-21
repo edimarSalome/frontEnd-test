@@ -59,6 +59,10 @@ body{
     .bg-danger{background: $danger !important; color: #fff;}
     .bg-success{background: $success !important; color: #fff;}
 
+    .tx-c{text-align: center;}
+
+    .faded{color:$faded !important;}
+
     #app{
         max-width: 1200px;
         margin: 0 auto;
@@ -214,6 +218,90 @@ body{
                     }
                 }
             }
+
+            /* Sugestão */
+            form.contact{
+                max-width: 500px;
+                margin: 0 auto;
+
+                h1{
+                    text-align: center;
+                }
+
+                input, textarea{
+                    background: #fff;
+                    border: 0px;
+                    outline: none;
+                    border-radius: 3px;
+                    padding: 1rem;
+                    width: 100%;
+                    margin-bottom: 1rem;
+                    font-family: 'Open sans', sans-serif;
+                }
+
+                textarea{
+                    height: 300px;
+                    resize: none;
+                }
+
+                .btn-submit{
+                    background: $primary;
+                    color: #fff;
+                    border-radius: 3px;
+                    border: 0px;
+                    padding: 1rem 2rem;
+
+                    &:active{
+                        background:#fff;
+                        color: $primary;
+                    }
+                }
+            }
+
+            /* Episodios */
+            .table-wrapper{
+                overflow-x: auto;
+
+                table.ep-table{
+                    width: 100%;
+                    min-width: 700px;
+                    border-collapse: collapse;
+    
+                    tr{
+    
+                        td{
+                            vertical-align: top;
+                            padding: 2rem 1rem;
+                            border-bottom: 1px solid $faded;
+
+                            &:first-child{padding-left: 0;}
+
+
+                            h1{
+                                margin: 0px;
+                                font-size: 2.5rem;
+                            }
+    
+                            p{
+                                margin: 0px;
+
+                                &.chars{
+                                    column-count: 2;
+                                    column-gap: 10px;
+                                    -moz-column-count: 2;
+                                    -moz-column-gap: 10px;
+                                    -webkit-column-count: 2;
+                                    -webkit-column-gap: 10px;
+
+                                    span{
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         footer{
@@ -231,45 +319,6 @@ body{
                     &.active{
                         a{color:#fff;}
                     }
-                }
-            }
-        }
-
-        /* Sugestão */
-        form.contact{
-            max-width: 500px;
-            margin: 0 auto;
-
-            h1{
-                text-align: center;
-            }
-
-            input, textarea{
-                background: #fff;
-                border: 0px;
-                outline: none;
-                border-radius: 3px;
-                padding: 1rem;
-                width: 100%;
-                margin-bottom: 1rem;
-                font-family: 'Open sans', sans-serif;
-            }
-
-            textarea{
-                height: 300px;
-                resize: none;
-            }
-
-            .btn-submit{
-                background: $primary;
-                color: #fff;
-                border-radius: 3px;
-                border: 0px;
-                padding: 1rem 2rem;
-
-                &:active{
-                    background:#fff;
-                    color: $primary;
                 }
             }
         }
