@@ -1,0 +1,61 @@
+<header>
+        <img class="logo" src="img/logo.jpg" alt="Logo Breaking Bad" />
+        <nav title="Opções">
+            <ul>
+                <li class="active"><a ui-sref="characters">Personagens</a></li>
+                <li><a ui-sref="episodes">Episódios</a></li>
+                <li><a ui-sref="sugestion">Sugestão</a></li>
+            </ul>
+        </nav>
+        <div class="search">
+            <input type="text" title="Encontre um personagem" placeholder="Encontre um personagem ..." ng-model="$ctrl.filter.name" ng-change="checkFilter()" />
+            <i class="search-icon"></i>
+        </div>
+    </header>
+    <section>
+        <div class="list-title">
+            <h1 ng-if="!$ctrl.filter.name.length">Personagens</h1>
+            <h1 ng-if="$ctrl.filter.name.length">Você pesquisou por "<span ng-bind="$ctrl.filter.name"></span>"</h1>
+            <nav class="filters" title="Filtros" ng-if="!$ctrl.filter.name.length">
+                <b>Filtre por:</b>
+                <button class="success" ng-class="{'active':getFilterStatus()==='Alive'}" ng-click="setFilterStatus('Alive')">Vivo</button>
+                <button class="danger" ng-class="{'active':getFilterStatus()==='Deceased'}" ng-click="setFilterStatus('Deceased')">Morto</button>
+                <button ng-class="{'active':getFilterStatus()===''}" ng-click="setFilterStatus('')">Todos</button>
+            </nav>
+        </div>
+        <div ng-if="loaded">
+            <ul class="char-list">
+                <li ng-repeat="char in (list =(charList | filter:$ctrl.filter))">
+                    <div class="char-img" style="background-image: url('{{char.img}}')">
+                        <div class="char-status" ng-bind="getStatus(char.status)" ng-class="getStatus(char.status)==='Vivo'?'bg-success':'bg-danger'"></div>
+                        <div class="char-info">
+                            <p class="char-name" ng-bind="char.name"></p>
+                            <div class="char-birth">
+                                &#9733; <span ng-bind="char.birthday"></span>
+                            </div>
+                            <div class="char-occupation">
+                                <span ng-repeat="occup in char.occupation" ng-bind="occup"></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <p ng-if="!list.length">Nenhum personagem encontrado.</p>
+        </div>
+        <div class="sk-cube-grid" ng-if="!loaded">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+        </div>
+    </section>
+    <footer>
+        <ul class="pagination" ng-if="pagination&&(getFilterStatus()===''&&!$ctrl.filter.name.length)">
+            <li ng-if="getActivePage()!==getTotalPages()" ng-click="setCharPage(getActivePage()+1)">Ver mais</li>
+        </ul>
+    </footer>
