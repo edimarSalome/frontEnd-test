@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="app">
     <head>
         <title>Breaking Bad - Catálogo</title>
         <link rel="shortcut icon" href="img/favicon.ico">
@@ -14,60 +14,10 @@
     <body>
         <div id="splash"></div>
         <div id="loader"></div>
-        <div id="app">
-            <header>
-                <img class="logo" src="img/logo.jpg" alt="Logo Breaking Bad" />
-                <nav title="Opções">
-                    <ul>
-                        <li class="active"><a href="index.html">Personagens</a></li>
-                        <li><a href="episodios.html">Episódios</a></li>
-                        <li><a href="sugestao.html">Sugestão</a></li>
-                    </ul>
-                </nav>
-                <div class="search">
-                    <input type="text" title="Encontre um personagem" placeholder="Encontre um personagem ..." v-model="configs.search" />
-                    <i class="search-icon"></i>
-                </div>
-            </header>
-            <section>
-                <div class="list-title">
-                    <h1>Personagens</h1>
-                    <nav class="filters" title="Filtros">
-                        <b>Filtre por:</b>
-                        <button class="success">Vivo</button>
-                        <button class="danger">Morto</button>
-                        <button class="active">Todos</button>
-                    </nav>
-                </div>
-                <ul class="char-list">
-                    <li ng-if="false" v-for="char in charList">
-                        <div class="char-img" v-bind:style="{'background-image': 'url('+char.img+')' }">
-                            <div class="char-status" v-html="getStatus(char.status)" v-bind:class="[getStatus(char.status)==='Vivo' ? 'bg-success' : '', 'bg-danger']"></div>
-                            <div class="char-info">
-                                <p class="char-name" v-html="char.name"></p>
-                                <div class="char-birth">
-                                    &#9733; <span v-html="char.birthday"></span>
-                                </div>
-                                <div class="char-occupation">
-                                    <span v-for="occup in char.occupation" v-html="occup"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-            <footer>
-                <ul class="pagination">
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                </ul>
-            </footer>
-        </div>
+        <div id="app" ui-view></div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/sanitize.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-sanitize.min.js"></script>
         <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
 
         <script src="js/app.js"></script>

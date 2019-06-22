@@ -1,0 +1,47 @@
+<header>
+        <img class="logo" src="img/logo.jpg" alt="Logo Breaking Bad" />
+        <nav title="Opções">
+            <ul>
+                <li class="active"><a ui-sref="characters">Personagens</a></li>
+                <li><a ui-sref="episodes">Episódios</a></li>
+                <li><a ui-sref="sugestion">Sugestão</a></li>
+            </ul>
+        </nav>
+        <div class="search">
+            <input type="text" title="Encontre um personagem" placeholder="Encontre um personagem ..." ng-model="$ctrl.filter.name" ng-change="checkFilter()" />
+            <i class="search-icon"></i>
+        </div>
+    </header>
+    <section>
+        <div class="list-title">
+            <h1 ng-if="!$ctrl.filter.name.length">Personagens</h1>
+            <h1 ng-if="$ctrl.filter.name.length">Você pesquisou por "<span ng-bind="$ctrl.filter.name"></span>"</h1>
+            <nav class="filters" title="Filtros">
+                <b>Filtre por:</b>
+                <button class="success" ng-class="{'active':getFilterStatus()==='Alive'}" ng-click="setFilterStatus('Alive')">Vivo</button>
+                <button class="danger" ng-class="{'active':getFilterStatus()==='Deceased'}" ng-click="setFilterStatus('Deceased')">Morto</button>
+                <button ng-class="{'active':getFilterStatus()===''}" ng-click="setFilterStatus('')">Todos</button>
+            </nav>
+        </div>
+        <ul class="char-list">
+            <li ng-repeat="char in charList | filter:$ctrl.filter">
+                <div class="char-img" style="background-image: url('{{char.img}}')">
+                    <div class="char-status" ng-bind="getStatus(char.status)" ng-class="getStatus(char.status)==='Vivo'?'bg-success':'bg-danger'"></div>
+                    <div class="char-info">
+                        <p class="char-name" ng-bind="char.name"></p>
+                        <div class="char-birth">
+                            &#9733; <span ng-bind="char.birthday"></span>
+                        </div>
+                        <div class="char-occupation">
+                            <span ng-repeat="occup in char.occupation" ng-bind="occup"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <footer>
+        <ul class="pagination" ng-if="pagination&&(getFilterStatus()===''&&!$ctrl.filter.name.length)">
+            <li ng-if="getActivePage()!==getTotalPages()" ng-click="setCharPage(getActivePage()+1)">Ver mais</li>
+        </ul>
+    </footer>

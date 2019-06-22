@@ -4,6 +4,7 @@ $faded:rgba(255,255,255, .6);
 $primary:#066b30;
 
 *{box-sizing: border-box;}
+*[ng-click]{cursor:pointer;}
 
 body{
     margin: 0;
@@ -166,8 +167,7 @@ body{
                 justify-content: space-between;
 
                 li{
-                    width: 23%;
-                    margin-right: 1rem;
+                    width: 24%;
                     margin-bottom: 1.5rem;
                     border:1px solid $faded;
 

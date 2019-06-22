@@ -1,49 +1,22 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Breaking Bad - Catálogo</title>
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <link rel="stylesheet" href="css/style.css" />
-
-        <style>
-            body{background: #000;}
-        </style>
-    </head>
-    <body>
-        <div id="splash"></div>
-        <div id="loader"></div>
-        <div id="app">
-            <header>
-                <img class="logo" src="img/logo.jpg" alt="Logo Breaking Bad" />
-                <nav title="Opções">
-                    <ul>
-                        <li><a href="index.html">Personagens</a></li>
-                        <li><a href="episodios.html">Episódios</a></li>
-                        <li class="active"><a href="sugestao.html">Sugestão</a></li>
-                    </ul>
-                </nav>
-                <div class="search">
-                    <input type="text" title="Encontre um personagem" placeholder="Encontre um personagem ..." />
-                    <i class="search-icon"></i>
-                </div>
-            </header>
-            <section>
-                <form class="contact">
-                    <h1>Envie sua sugestão</h1>
-                    <input type="text" title="Seu nome" placeholder="Seu nome" />
-                    <textarea title="Mensagem" placeholder="Mensagem"></textarea>
-                    <button class="btn-submit" type="submit">Enviar sugestão</button>
-                </form>
-            </section>
-        </div>
-
-        <!-- dev -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <!-- prod -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="js/app.js"></script>
-    </body>
-</html>
+<header>
+    <img class="logo" src="img/logo.jpg" alt="Logo Breaking Bad" />
+    <nav title="Opções">
+        <ul>
+            <li><a ui-sref="characters">Personagens</a></li>
+            <li><a ui-sref="episodes">Episódios</a></li>
+            <li class="active"><a ui-sref="sugestion">Sugestão</a></li>
+        </ul>
+    </nav>
+    <div class="search">
+        <input type="text" title="Encontre um personagem" placeholder="Encontre um personagem ..." />
+        <i class="search-icon"></i>
+    </div>
+</header>
+<section>
+    <form class="contact">
+        <h1>Envie sua sugestão</h1>
+        <input type="text" title="Seu nome" placeholder="Seu nome" />
+        <textarea title="Mensagem" placeholder="Mensagem"></textarea>
+        <button class="btn-submit" type="submit">Enviar sugestão</button>
+    </form>
+</section>
