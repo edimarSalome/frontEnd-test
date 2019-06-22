@@ -224,6 +224,25 @@ body {
           body #app footer ul.pagination li.active a {
             color: #fff; }
 
+@media screen and (max-width: 900px) {
+  body #app header .logo {
+    height: 150px; }
+  body #app header .search {
+    width: 100%; }
+  body #app section .char-list li {
+    width: 30%; }
+  body #app section .list-title {
+    flex-direction: column; }
+    body #app section .list-title h1 {
+      width: 100%; }
+    body #app section .list-title .filters {
+      margin-top: 2rem; } }
+@media screen and (max-width: 700px) {
+  body #app section .char-list li {
+    width: 48%; } }
+@media screen and (max-width: 500px) {
+  body #app section .char-list li {
+    width: 100%; } }
 .sk-cube-grid {
   width: 40px;
   height: 40px;

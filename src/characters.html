@@ -16,7 +16,7 @@
         <div class="list-title">
             <h1 ng-if="!$ctrl.filter.name.length">Personagens</h1>
             <h1 ng-if="$ctrl.filter.name.length">Você pesquisou por "<span ng-bind="$ctrl.filter.name"></span>"</h1>
-            <nav class="filters" title="Filtros">
+            <nav class="filters" title="Filtros" ng-if="!$ctrl.filter.name.length">
                 <b>Filtre por:</b>
                 <button class="success" ng-class="{'active':getFilterStatus()==='Alive'}" ng-click="setFilterStatus('Alive')">Vivo</button>
                 <button class="danger" ng-class="{'active':getFilterStatus()==='Deceased'}" ng-click="setFilterStatus('Deceased')">Morto</button>
