@@ -8,13 +8,15 @@
         </ul>
     </nav>
     <div class="search">
-        <input type="text" title="Encontre um personagem" placeholder="Encontre um personagem ..." />
-        <i class="search-icon"></i>
+        <form ng-submit="find(name)">
+            <input type="text" title="Encontre um personagem" ng-model="name" placeholder="Encontre um personagem ..." />
+            <button class="btn-search" type="submit"><i class="search-icon"></i></button>
+        </form>
     </div>
 </header>
 <section>
     <h1 class="tx-c">Episódios</h1>
-    <div class="table-wrapper">
+    <div class="table-wrapper" ng-if="loaded">
         <table class="ep-table">
             <tbody>
                 <tr ng-repeat="ep in epList track by $index">
@@ -37,6 +39,17 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="sk-cube-grid" ng-if="!loaded">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
     </div>
 </section>
 <footer>

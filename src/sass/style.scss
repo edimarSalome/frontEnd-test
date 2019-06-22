@@ -55,6 +55,15 @@ body{
                 color: #fff;
             }
         }
+
+        &.btn-search{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            border: none;
+            cursor: pointer;
+        }
     }
 
     .bg-danger{background: $danger !important; color: #fff;}
@@ -327,3 +336,5 @@ body{
     }
     
 }
+
+@import "spinner";

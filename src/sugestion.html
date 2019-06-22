@@ -8,15 +8,30 @@
         </ul>
     </nav>
     <div class="search">
-        <input type="text" title="Encontre um personagem" placeholder="Encontre um personagem ..." />
-        <i class="search-icon"></i>
+        <form ng-submit="find(name)">
+            <input type="text" title="Encontre um personagem" ng-model="name" placeholder="Encontre um personagem ..." />
+            <button class="btn-search" type="submit"><i class="search-icon"></i></button>
+        </form>
     </div>
 </header>
 <section>
-    <form class="contact">
+    <form class="contact" ng-submit="sendSuggestion()">
         <h1>Envie sua sugestão</h1>
-        <input type="text" title="Seu nome" placeholder="Seu nome" />
-        <textarea title="Mensagem" placeholder="Mensagem"></textarea>
+        <input type="text" title="Seu nome" placeholder="Seu nome" ng-model="suggestion.author" required/>
+        <textarea title="Mensagem" placeholder="Mensagem" ng-model="suggestion.message" required></textarea>
         <button class="btn-submit" type="submit">Enviar sugestão</button>
     </form>
+    <div class="spinner-wrapper" ng-if="!loaded">
+        <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+        </div>
+    </div>
 </section>

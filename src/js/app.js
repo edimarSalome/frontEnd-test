@@ -11,6 +11,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         controller: 'appCtrl',
         controllerAs: '$ctrl'
     })
+    .state('character', {
+        url: '/character/:name',
+        templateUrl: 'characters.html',
+        controller: 'appCtrl',
+        controllerAs: '$ctrl'
+    })
     .state('episodes', {
         url: '/episodes',
         templateUrl: 'episodes.html',
@@ -36,21 +42,23 @@ app.filter('range', ()=>{
 });
 
 /* Controller */
-app.controller('appCtrl', ['$rootScope', '$scope', '$http','$state','$filter', function($rootScope, $scope, $http, $state, $filter){
+app.controller('appCtrl', ['$rootScope', '$scope', '$http','$state','$filter','$stateParams', function($rootScope, $scope, $http, $state, $filter, $stateParams){
     let $ctrl = this;
 
-    $ctrl.get=(url, param)=>{return $http({method: 'GET',url: url});};
-    $ctrl.post=(url, param)=>{return $http({method: 'POST',url: url});};
+    $ctrl.get=(url)=>{return $http({method: 'GET',url: url});};
+    $ctrl.post=(url, param)=>{return $http({method: 'POST',url: url, data:param});};
 
     /* Characters */
     $ctrl.getChars=()=>{
+        $scope.loaded=false;
         if(!$rootScope.characters){
             $ctrl.get('https://www.breakingbadapi.com/api/characters', '')
             .then((res)=>{
                 $rootScope.characters = $filter('orderBy')(res.data, 'name');
                 $ctrl.setPagination('chars');
-            },(error)=>{alert('Ops, não conseguimos obter os personagens, tente novamente mais tarde.');});
-        }else{$ctrl.setPagination('chars');}
+                $scope.loaded=true;
+            },(error)=>{alert('Ops, não conseguimos obter os personagens, tente novamente mais tarde.'); $scope.loaded=true;});
+        }else{$ctrl.setPagination('chars'); $scope.loaded=true;}
     };
 
     $ctrl.setPagination=(list)=>{
@@ -65,7 +73,7 @@ app.controller('appCtrl', ['$rootScope', '$scope', '$http','$state','$filter', f
     };
 
     $scope.setCharPage=(page)=>{
-        $scope.charList=[];
+        $scope.charList=$stateParams.name?$rootScope.characters:[];
 
         for(let i=$scope.charList.length; i <($scope.pagination.step*page); i++){
             if($rootScope.characters[i])$scope.charList.push($rootScope.characters[i]);
@@ -96,6 +104,8 @@ app.controller('appCtrl', ['$rootScope', '$scope', '$http','$state','$filter', f
 
     /* Episodes */
     $ctrl.getEpisodes=()=>{
+        $scope.loaded=false;
+
         if(!$rootScope.episodes){
             $ctrl.get('https://www.breakingbadapi.com/api/episodes', '')
             .then((res)=>{
@@ -107,9 +117,10 @@ app.controller('appCtrl', ['$rootScope', '$scope', '$http','$state','$filter', f
                 
                 $rootScope.episodes = $filter('orderBy')($rootScope.episodes, 'air_date', true);
                 $ctrl.setPagination('episodes');
+                $scope.loaded=true;
 
-            },(error)=>{alert('Ops, não conseguimos obter os personagens, tente novamente mais tarde.');});
-        }else{$ctrl.setPagination('episodes');}
+            },(error)=>{alert('Ops, não conseguimos obter os personagens, tente novamente mais tarde.'); $scope.loaded=true;});
+        }else{$ctrl.setPagination('episodes'); $scope.loaded=true;}
     };
 
     $scope.setEpisodesPage=(page)=>{
@@ -122,15 +133,31 @@ app.controller('appCtrl', ['$rootScope', '$scope', '$http','$state','$filter', f
         $scope.pagination.activePage=page;
     };
 
+    /* Suggestion */
+    $scope.sendSuggestion=()=>{
+        $scope.loaded=false;
+        $ctrl.post('https://frontendtestesamba.free.beeceptor.com/breaking-bad/suggestions', $scope.suggestion).then((res)=>{
+            alert('Sugestão enviada, muito obrigado!');
+            $scope.suggestion={};
+            $scope.loaded=true;
+        }, (error)=>{
+            $scope.loaded=true;
+            alert("Não conseguimos enviar a mensagem. Por favor, tente novamente mais tarde.");
+        });
+    };
 
+    /* find */
+    $scope.find=(name)=>{if(!!name)$state.go('character', {name:name});}
 
     $ctrl.construct=()=>{
         if($state.current.name==='characters'){
             $ctrl.getChars();
             $ctrl.filter={status:'', name:''};
-        }else if($state.current.name==='episodes'){
-            $ctrl.getEpisodes();
-        }
+        }else if($state.current.name==='character'){
+            $ctrl.getChars();
+            $ctrl.filter={status:'', name:$stateParams.name};
+        }else if($state.current.name==='episodes'){$ctrl.getEpisodes();}
+        else{$scope.loaded=true;}
     };
 
     $ctrl.construct();
