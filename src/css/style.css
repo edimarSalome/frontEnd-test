@@ -216,7 +216,7 @@ body {
       text-align: center; }
       body #app footer ul.pagination {
         display: inline-flex;
-        margin: 0 auto; }
+        margin: 0 auto 2rem; }
         body #app footer ul.pagination li {
           padding: .5rem; }
           body #app footer ul.pagination li a {
