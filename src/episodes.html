@@ -17,87 +17,21 @@
     <div class="table-wrapper">
         <table class="ep-table">
             <tbody>
-                <tr>
+                <tr ng-repeat="ep in epList track by $index">
                     <td width="1%">
-                        <h1>Ozymandias</h1>
+                        <h1 ng-bind="ep.title"></h1>
                         <p>
-                            Season 5 - Espisódio 1
+                            Season <span ng-bind="ep.season"></span> - Espisódio <span ng-bind="ep.episode"></span>
                         </p>
                     </td>
                     <td class="tx-c">
                         <p class="faded">Data Estreia:</p>
-                        <p>15/09/2013</p>
+                        <p ng-bind="ep.air_date|date:'dd/MM/yyyy'"></p>
                     </td>
                     <td width="40%">
                         <p class="faded">Personagens:</p>
                         <p class="chars">
-                            <span>Walter White</span>
-                            <span>Jesse Pinkman</span>
-                            <span>Skyler White</span>
-                            <span>Walter White Jr.</span>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="1%">
-                        <h1>Ozymandias</h1>
-                        <p>
-                            Season 5 - Espisódio 1
-                        </p>
-                    </td>
-                    <td class="tx-c">
-                        <p class="faded">Data Estreia:</p>
-                        <p>15/09/2013</p>
-                    </td>
-                    <td width="40%">
-                        <p class="faded">Personagens:</p>
-                        <p class="chars">
-                            <span>Walter White</span>
-                            <span>Jesse Pinkman</span>
-                            <span>Skyler White</span>
-                            <span>Walter White Jr.</span>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="1%">
-                        <h1>Ozymandias</h1>
-                        <p>
-                            Season 5 - Espisódio 1
-                        </p>
-                    </td>
-                    <td class="tx-c">
-                        <p class="faded">Data Estreia:</p>
-                        <p>15/09/2013</p>
-                    </td>
-                    <td width="40%">
-                        <p class="faded">Personagens:</p>
-                        <p class="chars">
-                            <span>Walter White</span>
-                            <span>Jesse Pinkman</span>
-                            <span>Skyler White</span>
-                            <span>Walter White Jr.</span>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="1%">
-                        <h1>Ozymandias</h1>
-                        <p>
-                            Season 5 - Espisódio 1
-                        </p>
-                    </td>
-                    <td class="tx-c">
-                        <p class="faded">Data Estreia:</p>
-                        <p>15/09/2013</p>
-                    </td>
-                    <td width="40%">
-                        <p class="faded">Personagens:</p>
-                        <p class="chars">
-                            <span>Walter White</span>
-                            <span>Jesse Pinkman</span>
-                            <span>Skyler White</span>
-                            <span>Walter White Jr.</span>
+                            <span ng-repeat="charName in ep.characters" ng-bind="charName"></span>
                         </p>
                     </td>
                 </tr>
@@ -106,10 +40,7 @@
     </div>
 </section>
 <footer>
-    <ul class="pagination">
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
+    <ul class="pagination" ng-if="pagination">
+        <li ng-if="getActivePage()!==getTotalPages()" ng-click="setEpisodesPage(getActivePage()+1)">Ver mais</li>
     </ul>
 </footer>

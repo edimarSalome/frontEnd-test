@@ -24,7 +24,7 @@
             </nav>
         </div>
         <ul class="char-list">
-            <li ng-repeat="char in charList | filter:$ctrl.filter">
+            <li ng-repeat="char in charList track by $index | filter:$ctrl.filter">
                 <div class="char-img" style="background-image: url('{{char.img}}')">
                     <div class="char-status" ng-bind="getStatus(char.status)" ng-class="getStatus(char.status)==='Vivo'?'bg-success':'bg-danger'"></div>
                     <div class="char-info">

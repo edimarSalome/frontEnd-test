@@ -36,31 +36,39 @@ app.filter('range', ()=>{
 });
 
 /* Controller */
-app.controller('appCtrl', ['$scope', '$http','$state','$filter', function($scope, $http, $state, $filter){
+app.controller('appCtrl', ['$rootScope', '$scope', '$http','$state','$filter', function($rootScope, $scope, $http, $state, $filter){
     let $ctrl = this;
 
     $ctrl.get=(url, param)=>{return $http({method: 'GET',url: url});};
     $ctrl.post=(url, param)=>{return $http({method: 'POST',url: url});};
 
+    /* Characters */
     $ctrl.getChars=()=>{
-        $ctrl.get('https://www.breakingbadapi.com/api/characters', '')
-        .then((res)=>{
-            $ctrl.characters = $filter('orderBy')(res.data, 'name');
-            $ctrl.setPagination();
-        },(error)=>{alert('Ops, não conseguimos obter os personagens, tente novamente mais tarde.');});
+        if(!$rootScope.characters){
+            $ctrl.get('https://www.breakingbadapi.com/api/characters', '')
+            .then((res)=>{
+                $rootScope.characters = $filter('orderBy')(res.data, 'name');
+                $ctrl.setPagination('chars');
+            },(error)=>{alert('Ops, não conseguimos obter os personagens, tente novamente mais tarde.');});
+        }else{$ctrl.setPagination('chars');}
     };
 
-    $ctrl.setPagination=()=>{
+    $ctrl.setPagination=(list)=>{
         $scope.pagination={step:12, activePage:1};
-        $scope.pagination.pages = Math.round($ctrl.characters.length/$scope.pagination.step);
-        $scope.setCharPage(1);
+        if(list==='chars'){
+            $scope.pagination.pages = Math.ceil($rootScope.characters.length/$scope.pagination.step);
+            $scope.setCharPage(1);
+        }else if(list==='episodes'){
+            $scope.pagination.pages = Math.ceil($rootScope.episodes.length/$scope.pagination.step);
+            $scope.setEpisodesPage(1);
+        }
     };
 
     $scope.setCharPage=(page)=>{
         $scope.charList=[];
 
         for(let i=$scope.charList.length; i <($scope.pagination.step*page); i++){
-            $scope.charList.push($ctrl.characters[i]);
+            if($rootScope.characters[i])$scope.charList.push($rootScope.characters[i]);
         };
 
         $scope.pagination.activePage=page;
@@ -68,7 +76,7 @@ app.controller('appCtrl', ['$scope', '$http','$state','$filter', function($scope
 
     $scope.checkFilter=()=>{
         if($ctrl.filter.name.length){
-            $scope.charList=$ctrl.characters;
+            $scope.charList=$rootScope.characters;
         }else{$scope.setCharPage($scope.pagination.activePage);}
     };
 
@@ -76,7 +84,7 @@ app.controller('appCtrl', ['$scope', '$http','$state','$filter', function($scope
     $scope.getTotalPages=()=>{return $scope.pagination.pages;}
     $scope.setFilterStatus=(status)=>{$ctrl.filter.status=status; $ctrl.searching();};
     $scope.getFilterStatus=()=>{return $ctrl.filter.status;};
-    $ctrl.searching=()=>{if($scope.getFilterStatus()===''){$scope.setCharPage($scope.pagination.activePage);}else{$scope.charList=$ctrl.characters;};};
+    $ctrl.searching=()=>{if($scope.getFilterStatus()===''){$scope.setCharPage($scope.pagination.activePage);}else{$scope.charList=$rootScope.characters;};};
 
     $scope.getStatus=(status)=>{
         if(status==='Alive')return 'Vivo';
@@ -85,16 +93,43 @@ app.controller('appCtrl', ['$scope', '$http','$state','$filter', function($scope
         else return status;
     };
 
-    $ctrl.getEpis=()=>{
 
+    /* Episodes */
+    $ctrl.getEpisodes=()=>{
+        if(!$rootScope.episodes){
+            $ctrl.get('https://www.breakingbadapi.com/api/episodes', '')
+            .then((res)=>{
+                $rootScope.episodes = [];
+                res.data.forEach((value)=>{
+                    value.air_date = new Date(value.air_date);
+                    $rootScope.episodes.push(value);
+                });
+                
+                $rootScope.episodes = $filter('orderBy')($rootScope.episodes, 'air_date', true);
+                $ctrl.setPagination('episodes');
+
+            },(error)=>{alert('Ops, não conseguimos obter os personagens, tente novamente mais tarde.');});
+        }else{$ctrl.setPagination('episodes');}
     };
+
+    $scope.setEpisodesPage=(page)=>{
+        $scope.epList=[];
+
+        for(let i=$scope.epList.length; i <($scope.pagination.step*page); i++){
+            if(!!$rootScope.episodes[i])$scope.epList.push($rootScope.episodes[i]);
+        };
+
+        $scope.pagination.activePage=page;
+    };
+
+
 
     $ctrl.construct=()=>{
         if($state.current.name==='characters'){
             $ctrl.getChars();
             $ctrl.filter={status:'', name:''};
         }else if($state.current.name==='episodes'){
-
+            $ctrl.getEpisodes();
         }
     };
 
